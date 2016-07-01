@@ -1,0 +1,27 @@
+{
+  "name": "expressagain",
+  "version": "0.0.1",
+  "description": "Practicing Express routing and view rendering",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "practice",
+    "confusion",
+    "chaos",
+    "bedlam"
+  ],
+  "author": "Bill Patrianakos <bill@billpatrianakos.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.1.0",
+    "gulp-live-server": "0.0.30"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0"
+  }
+}
