@@ -1,0 +1,9 @@
+
+<h1>Todo List</h1>
+<ul>
+  {{#each todos}}
+    <li>
+      <input type="checkbox" name="todo"> {{this.name}} <a href="/{{@index}}">More info</a>
+    </li>
+  {{/each}}
+</ul>

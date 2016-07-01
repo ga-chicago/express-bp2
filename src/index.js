@@ -5,12 +5,31 @@
 
 // Require the dependencies
 var express = require('express'),
-    app     = express();
+    app     = express(),
+    exphbs  = require('express-handlebars'),
+    fs      = require('fs');
+
+app.engine('hbs', exphbs({
+  defaultLayout:  'main',
+  partialsDir:    __dirname + '/views/partials',
+  layoutsDir:     __dirname + '/views/layouts',
+  extname:        '.hbs'
+}));
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
+
+// Configure serving static assets
+app.use(express.static(__dirname + '/public'));
 
 // Define home page
 app.route('/?')
   .get(function(req, res, next) {
-    res.send('Homepage');
+    var todos = fs.readFileSync(__dirname + '/db/todos.json');
+
+    res.render('home', {
+      pageTitle:  'Homepage',
+      todos:      JSON.parse(todos.toString())
+    });
   })
   .post(function(req, res, next) {
     // response here
