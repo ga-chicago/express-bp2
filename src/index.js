@@ -9,6 +9,7 @@ var express = require('express'),
     exphbs  = require('express-handlebars'),
     fs      = require('fs');
 
+// Configuring the applicartion
 app.engine('hbs', exphbs({
   defaultLayout:  'main',
   partialsDir:    __dirname + '/views/partials',
@@ -20,6 +21,16 @@ app.set('views', __dirname + '/views');
 
 // Configure serving static assets
 app.use(express.static(__dirname + '/public'));
+
+// Example of members ony middleware
+app.use('/members_only/?', function(req, res, next) {
+  if (req.session.isLoggedIn) {
+    return next()
+  } else {
+    // flash messages
+    res.redirect('/login');
+  }
+});
 
 // Define the todos route
 app.route('/todos/:id/?')
@@ -42,6 +53,7 @@ app.route('/?')
 
     res.render('home', {
       pageTitle:  'Homepage',
+      // todos:      ['Hello', 'This', 'Is', 'An Array.', 'Hi.']
       todos:      JSON.parse(todos.toString())
     });
   })
