@@ -32,19 +32,8 @@ app.use('/members_only/?', function(req, res, next) {
   }
 });
 
-// Define the todos route
-app.route('/todos/:id/?')
-  .get(function(req, res, next) {
-    var id    = parseInt(req.params.id),
-        todos = fs.readFileSync(__dirname + '/db/todos.json');
-
-    todos = JSON.parse(todos.toString()); // Turn todos file into JS object
-
-    res.render('detail', {
-      pageTitle: todos[id].name,
-      todo:      todos[id]
-    });
-  });
+// Mount all middleware routes
+app.use('/todos/?', require('./controllers/todos'));
 
 // Define home page
 app.route('/?')
