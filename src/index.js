@@ -1,6 +1,6 @@
 // Main Server File
 // ================
-// Responsible for configuring, 
+// Responsible for configuring,
 // starting, and running the server.
 
 // Require the dependencies
@@ -8,6 +8,11 @@ var express = require('express'),
     app     = express(),
     exphbs  = require('express-handlebars'),
     fs      = require('fs');
+    bodyParser = require('body-parser')
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 
 // Configuring the applicartion
 app.engine('hbs', exphbs({
@@ -31,6 +36,11 @@ app.use('/members_only/?', function(req, res, next) {
     res.redirect('/login');
   }
 });
+
+// require the database
+require('./models/db')
+
+
 
 // Mount all middleware routes
 app.use('/todos/?', require('./controllers/todos'));

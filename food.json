@@ -1,0 +1,12 @@
+[
+  {
+    "name": "aruglaa",
+    "description": "green and leafy",
+    "yumminess": true,
+    "someArray": ["this is stuff", "I could be stuff", "were all start stuff"],
+    "carlSagan": "is dead"
+  },
+  {
+    "jerry": "seinfeld"
+  }
+]
