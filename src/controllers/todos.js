@@ -71,9 +71,16 @@ Todos.route('/:id/?')
     // Turn  todos into string parsed into a POJO
     todos = JSON.parse(todos.toString());
 
+    var TodoModel = require(__dirname + '/../models/todo'),
+        Todo      = new TodoModel('Feed the homeless man in the basement', 'Make sure his chains are tied tight');
+
+    Todo.parse();
+    var saved = Todo.save();
+
     res.render('detail', {
       pageTitle:  todos[id].name,
-      todo:       todos[id]
+      todo:       todos[id],
+      saved:      saved ? 'YES' : 'NO'
     })
   });
 

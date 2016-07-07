@@ -1,10 +1,1 @@
-[
-  {
-    "name": "Walk the dog",
-    "description": "Walk the dog at least 1/2 mile around the city"
-  },
-  {
-    "name": "Feed the fish",
-    "description": "Make sure to use gluten-free fish food."
-  }
-]
+[{"name":"Walk the dog","description":"Walk the dog at least 1/2 mile around the city"},{"name":"Feed the fish","description":"Make sure to use gluten-free fish food."},{"name":"Feed the homeless man in the basement","description":"Make sure his chains are tied tight"}]
