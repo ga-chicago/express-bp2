@@ -5,46 +5,65 @@ var express = require('express'),
     mongoose = require('mongoose'),
     User    = require('../models/user');
 
+// A single TODO resource
+Todos.route('/:id/?')
+  // GET /todos/:id
+  // --------------
+  // Gets a single Todo
+  .get(function(req, res, next) {
+    res.json({message: 'You asked for ' + req.params.id});
+  })
+  // PATCH /todos/:id
+  // ----------------
+  // Updates a single todo by ID
+  .patch(function(req, res, next) {
+    // 1. Find the resource
+    // 2. Update the resource
+    // 3. Save it back to the database
+    res.json({message: 'Updated todo at ' + req.params.id});
+  })
+  // DELETE /todos/:id
+  // -----------------
+  // Route responsible for deleting items based on ID
+  .delete(function(req, res, next) {
+    res.json({message: 'You deleted todo number ' + req.params.id});
+  });
 
-
-Todos.route('/mongoose')
-
-
+Todos.route('/?')
   .get(function(req, res){
     User.find(function(err, users){
       console.log(users)
       console.log(err)
       res.json(users)
     })
-
-
   })
-
+  // POST /mongoose
   .post(function(req, res){
-
-    User.create({username: 'Jim', password: '1234'}, function(err, user){
-      console.log(user)
-      res.json(user)
-    })
-  })
-
-
-  Todos.put('/mongoose/:id', function(req, res, next) {
-  console.log(req.body);
-    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
-      if (err) return next(err);
-      res.json(user)
-    });
+    res.json({message: 'You made a new one'});
+    // User.create({username: 'Jim', password: '1234'}, function(err, user){
+    //   console.log(user)
+    //   res.json(user)
+    // })
   });
 
+// NO COPY UNDER THIS LINE
+//-------------------------
+  // Todos.put('/mongoose/:id', function(req, res, next) {
+  // console.log(req.body);
+  //   User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+  //     if (err) return next(err);
+  //     res.json(user)
+  //   });
+  // });
 
-  Todos.patch('/mongoose/:id', function(req, res, next) {
-    console.log(req.body);
-    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
-      if (err) return next(err);
-      res.json(user);
-    });
-  });
+
+  // Todos.patch('/mongoose/:id', function(req, res, next) {
+  //   console.log(req.body);
+  //   User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+  //     if (err) return next(err);
+  //     res.json(user);
+  //   });
+  // });
 
 
 
