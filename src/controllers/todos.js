@@ -2,33 +2,49 @@
 var express = require('express'),
     Todos   = express.Router(),
     fs      = require('fs');
-    // mongoose = require('mongoose'),
-    // User    = require('../models/user');
-
-//mongoose routesssssssssssssssss
-
-// Todos.route('/mongoose')
+    mongoose = require('mongoose'),
+    User    = require('../models/user');
 
 
-//   .get(function(req, res){
-//     User.find(function(err, users){
-//       console.log(users)
-//       console.log(err)
-//       res.json(users)
-//     })
+
+Todos.route('/mongoose')
 
 
-//   })
-
-//   .post(function(req, res){
-
-//     User.create({username: 'Jim', password: '1234'}, function(err, user){
-//       console.log(user)
-//       res.json(user)
-//     })
-//   })
+  .get(function(req, res){
+    User.find(function(err, users){
+      console.log(users)
+      console.log(err)
+      res.json(users)
+    })
 
 
+  })
+
+  .post(function(req, res){
+
+    User.create({username: 'Jim', password: '1234'}, function(err, user){
+      console.log(user)
+      res.json(user)
+    })
+  })
+
+
+  Todos.put('/mongoose/:id', function(req, res, next) {
+  console.log(req.body);
+    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+      if (err) return next(err);
+      res.json(user)
+    });
+  });
+
+
+  Todos.patch('/mongoose/:id', function(req, res, next) {
+    console.log(req.body);
+    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+      if (err) return next(err);
+      res.json(user);
+    });
+  });
 
 
 

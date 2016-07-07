@@ -40,7 +40,7 @@ app.use('/members_only/?', function(req, res, next) {
 // require the database
 
 
-// require('./models/db')
+require('./models/db')
 
 
 
