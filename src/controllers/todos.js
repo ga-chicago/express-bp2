@@ -1,32 +1,32 @@
 // Require dependencies
 var express = require('express'),
     Todos   = express.Router(),
-    fs      = require('fs'),
-    mongoose = require('mongoose'),
-    User    = require('../models/user');
+    fs      = require('fs');
+    // mongoose = require('mongoose'),
+    // User    = require('../models/user');
 
 //mongoose routesssssssssssssssss
 
-Todos.route('/mongoose')
+// Todos.route('/mongoose')
 
 
-  .get(function(req, res){
-    User.find(function(err, users){
-      console.log(users)
-      console.log(err)
-      res.json(users)
-    })
+//   .get(function(req, res){
+//     User.find(function(err, users){
+//       console.log(users)
+//       console.log(err)
+//       res.json(users)
+//     })
 
 
-  })
+//   })
 
-  .post(function(req, res){
+//   .post(function(req, res){
 
-    User.create({username: 'Jim', password: '1234'}, function(err, user){
-      console.log(user)
-      res.json(user)
-    })
-  })
+//     User.create({username: 'Jim', password: '1234'}, function(err, user){
+//       console.log(user)
+//       res.json(user)
+//     })
+//   })
 
 
 
